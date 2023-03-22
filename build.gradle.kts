@@ -17,6 +17,7 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.test {
@@ -29,4 +30,12 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClass.set("MainKt")
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }

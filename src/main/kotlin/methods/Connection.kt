@@ -13,9 +13,8 @@ fun connectionCheckExtended(waitTime: Long): Boolean {
     do {
         val response = makeGetRequest(requestPath = "/")
         if (response.type == 0) {
-            println("Отсутствует соединение с сервером. Повторная попытка соединения через ${waitTime/1000} секунд.")
+            println("Отсутствует соединение с сервером. Повторная попытка соединения через $waitTime мс.")
             Thread.sleep(waitTime)
-            return false
         }
     } while (response.type == 0)
 
@@ -26,7 +25,7 @@ fun connectionCheckExtended(waitTime: Long): Boolean {
 fun connectionCheck(waitTime: Long): Boolean {
     val response = makeGetRequest(requestPath = "/")
     if (response.type == 0) {
-        println("Отсутствует соединение с сервером. Повторная попытка соединения через ${waitTime/1000} секунд.")
+        println("Отсутствует соединение с сервером. Повторная попытка соединения через $waitTime мс.")
         Thread.sleep(waitTime)
         return false
     }
